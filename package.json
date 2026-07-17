@@ -1,0 +1,19 @@
+{
+  "name": "recovery-plus",
+  "version": "1.0.0",
+  "description": "RECOVERY PLUS - High-Pressure Compression Boots landing page",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes http-server . -p 8080 -c-1 -o",
+    "serve": "npx --yes http-server . -p 8080 -c-1",
+    "dev": "npx --yes http-server . -p 8080 -c-1 -o"
+  },
+  "keywords": [
+    "recovery",
+    "compression",
+    "boots",
+    "landing-page"
+  ],
+  "author": "Recovery Plus",
+  "license": "MIT"
+}
