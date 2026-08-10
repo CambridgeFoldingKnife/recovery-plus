@@ -1,0 +1,24 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import './index.css'
+import App from './App'
+
+const rootEl = document.getElementById('root')
+if (!rootEl) throw new Error('Root element not found')
+
+createRoot(rootEl).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
+
+// Log any uncaught errors
+window.addEventListener('error', (e) => {
+  console.error('Global error:', e.error)
+})
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled rejection:', e.reason)
+})
