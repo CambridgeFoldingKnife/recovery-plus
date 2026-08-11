@@ -1,10 +1,51 @@
+import { useRef } from 'react'
 import { scenes, sceneImage } from '../../data/scenes'
 import SectionHeader from '../ui/SectionHeader'
-import Reveal from '../ui/Reveal'
+import { gsap, useGSAP, prefersReducedMotion } from '../../lib/gsap'
 
 export default function ScenesSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const itemsRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (prefersReducedMotion()) return
+
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Image parallax
+      gsap.fromTo(imageRef.current, { y: 40 }, {
+        y: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      })
+
+      // Scene items stagger in from left
+      const items = itemsRef.current?.querySelectorAll('.scene-item')
+      if (items) {
+        gsap.fromTo(items, { opacity: 0, x: -30 }, {
+          opacity: 1,
+          x: 0,
+          stagger: 0.15,
+          ease: 'power3.out',
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 60%',
+            toggleActions: 'play none none none',
+          },
+        })
+      }
+    })
+  }, { scope: sectionRef })
+
   return (
-    <section className="section" id="scenes">
+    <section ref={sectionRef} className="section" id="scenes">
       <div className="container">
         <SectionHeader
           label="运动恢复场景"
@@ -14,30 +55,53 @@ export default function ScenesSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="flex flex-col gap-8">
+          <div ref={itemsRef} className="flex flex-col gap-8">
             {scenes.map((scene, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">{scene.title}</h3>
-                  <p className="text-sm text-accent font-medium mb-2">{scene.subtitle}</p>
-                  <p className="text-text-secondary leading-relaxed">{scene.description}</p>
-                </div>
-              </Reveal>
+              <div key={i} className="scene-item" style={{ opacity: 0 }}>
+                <h3 className="text-xl font-bold mb-1">{scene.title}</h3>
+                <p className="text-sm text-accent font-medium mb-2">{scene.subtitle}</p>
+                <p className="text-text-secondary leading-relaxed">{scene.description}</p>
+              </div>
             ))}
           </div>
 
-          <Reveal delay={150}>
+          <RevealWrapper>
             <img
+              ref={imageRef}
               src={sceneImage.src}
               alt={sceneImage.alt}
               width={2752}
               height={1536}
               loading="lazy"
-              className="rounded-xl"
+              className="rounded-xl will-change-transform"
             />
-          </Reveal>
+          </RevealWrapper>
         </div>
       </div>
     </section>
+  )
+}
+
+// Simple wrapper for initial reveal, then parallax takes over
+function RevealWrapper({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  useGSAP(() => {
+    if (prefersReducedMotion()) return
+    gsap.fromTo(ref.current, { opacity: 0, y: 30 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: ref.current,
+        start: 'top 85%',
+        once: true,
+      },
+    })
+  }, { scope: ref })
+  return (
+    <div ref={ref} style={{ opacity: 0 }}>
+      {children}
+    </div>
   )
 }

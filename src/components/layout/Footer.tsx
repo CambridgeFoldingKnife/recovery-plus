@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { trustStats, trustTexts } from '../../data/trust'
+import CountUp from '../ui/CountUp'
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
             {trustStats.map((stat, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl lg:text-3xl font-extrabold tracking-tight mb-1">
-                  {stat.number}
+                  <CountUp target={stat.target} suffix={stat.suffix} />
                   <small className="text-sm font-medium text-text-tertiary">{stat.unit}</small>
                 </p>
                 <p className="text-xs text-text-tertiary">{stat.label}</p>
