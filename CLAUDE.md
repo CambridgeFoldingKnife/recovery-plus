@@ -19,7 +19,7 @@ npm run lint       # oxlint
 
 ```
 src/
-├── main.tsx / App.tsx          # Entry point + React Router routes (/, /faq)
+├── main.tsx / App.tsx          # Entry point + React Router routes (/, /product, /training, /faq)
 ├── index.css                   # Tailwind directives + CSS reset + @keyframes faq-in
 ├── types/index.ts              # All TypeScript interfaces
 ├── data/                       # All static content as typed TS objects
@@ -39,10 +39,12 @@ src/
 ├── components/
 │   ├── layout/                 # Layout (skip-link + Nav + Footer + <Outlet>), Nav, Footer
 │   ├── ui/                     # Button, Card, SectionHeader, SectionLabel, Reveal, Icons
-│   ├── sections/               # 9 homepage sections (Hero → Training)
+│   ├── sections/               # Homepage + product/training sections (Hero, Timeline, ProductShowcase, Scenes, 产品洞察/特性/对比, Training)
 │   └── faq/                    # FaqHero, FaqQuickNav, FaqCategory, FaqAccordion
 └── pages/
-    ├── HomePage.tsx            # Assembles all 9 sections
+    ├── HomePage.tsx            # Assembles 4 homepage sections (Hero/技术/产品/场景)
+    ├── ProductPage.tsx         # PageHero + 产品洞察/特性/对比/产品展示
+    ├── TrainingPage.tsx        # PageHero + 培训卡片
     └── FaqPage.tsx             # FaqHero + QuickNav + 12 categories
 ```
 
@@ -61,7 +63,7 @@ All design tokens from the original CSS `:root` are mapped to `tailwind.config.t
 
 **FAQ accordion**: Uses React `useState` toggle — NOT native `<details>/<summary>`. Native `<details>` was unreliable across browsers for this project.
 
-**Hash navigation**: On the homepage, `<a href="/#sectionId">` uses native browser hash scrolling (no JS). Cross-page (e.g., clicking a hash link from `/faq`), `handleHashClick` calls `navigate('/', { state: { scrollTo: sectionId } })` and `HomePage` reads `location.state.scrollTo` to scroll after mount. Never use React Router `<Link to="/#hash">` — this triggers a known bug that blanks the page.
+**Hash navigation**: On the homepage, `<a href="/#sectionId">` uses native browser hash scrolling (no JS). Cross-page (e.g., clicking a hash link from `/faq`/`/product`/`/training`), `handleHashClick` calls `navigate('/', { state: { scrollTo: sectionId } })` and `HomePage` reads `location.state.scrollTo` to scroll after mount. Never use React Router `<Link to="/#hash">` — this triggers a known bug that blanks the page.
 
 **DO NOT call `close()` from `useMobileMenu` in Nav link `onClick` handlers.** The `close()` function calls `setIsOpen(false)` which triggers a React re-render during click event processing, breaking React Router's event delegation and causing unintended full-page reloads. `useMobileMenu` is currently NOT used in Nav — the mobile menu drawer was the root cause of the FAQ accordion click-bug.
 

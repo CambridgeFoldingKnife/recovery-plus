@@ -30,8 +30,8 @@ export default function ScenesSection() {
             <img
               src={sceneImage.src}
               alt={sceneImage.alt}
-              width={1216}
-              height={912}
+              width={2752}
+              height={1536}
               loading="lazy"
               className="rounded-xl"
             />

@@ -3,7 +3,7 @@ import type { ProductCard } from '../types'
 export const products: ProductCard[] = [
   {
     badge: '高压便携款',
-    imageSrc: '/assets/2.JPG',
+    imageSrc: '/assets/001.jpg',
     label: '高压便携款',
     description:
       '最高 270 mmHg 压力，外置泵设计。轻量便携，六独立气囊覆盖足部至大腿全腿。适合追求极致压力的专业运动人群。',

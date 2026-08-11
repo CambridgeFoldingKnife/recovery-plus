@@ -10,8 +10,8 @@ export default function ProductInsightSection() {
             <img
               src={productInsight.imageSrc}
               alt="Theratools 空气压力波运动恢复设备"
-              width={1368}
-              height={768}
+              width={2368}
+              height={1792}
               className="rounded-xl"
             />
           </Reveal>

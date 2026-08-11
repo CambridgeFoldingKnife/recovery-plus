@@ -1,14 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import HeroSection from '../components/sections/HeroSection'
-import ProductInsightSection from '../components/sections/ProductInsightSection'
 import TimelineSection from '../components/sections/TimelineSection'
-import FeaturesSection from '../components/sections/FeaturesSection'
-import ComparisonSection from '../components/sections/ComparisonSection'
 import ProductShowcaseSection from '../components/sections/ProductShowcaseSection'
 import ScenesSection from '../components/sections/ScenesSection'
-import TrustSection from '../components/sections/TrustSection'
-import TrainingSection from '../components/sections/TrainingSection'
 
 export default function HomePage() {
   const location = useLocation()
@@ -32,14 +27,9 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ProductInsightSection />
       <TimelineSection />
-      <FeaturesSection />
-      <ComparisonSection />
       <ProductShowcaseSection />
       <ScenesSection />
-      <TrustSection />
-      <TrainingSection />
     </>
   )
 }
