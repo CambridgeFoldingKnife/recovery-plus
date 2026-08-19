@@ -15,7 +15,7 @@ export default function ProductPage() {
       <ProductInsightSection />
       <FeaturesSection />
       <ComparisonSection />
-      <ProductShowcaseSection />
+      <ProductShowcaseSection images={['/assets/1.png', '/assets/006.jpg']} />
     </>
   )
 }

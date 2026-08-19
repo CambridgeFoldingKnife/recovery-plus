@@ -2,6 +2,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useStickyNav } from '../../hooks/useStickyNav'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
 import Button from '../ui/Button'
+import MagneticButton from '../ui/MagneticButton'
 
 const HOME_SECTION_IDS = ['top', 'technology', 'products', 'scenes']
 
@@ -28,12 +29,22 @@ export default function Nav() {
       }`}
     >
       <div className="container flex items-center justify-between h-16">
-        <NavLink to="/" className="shrink-0 flex items-center" aria-label="Theratools 首页">
+        <NavLink to="/" className="shrink-0 flex items-center magnetic" aria-label="Theratools 首页">
           <img src="/assets/threatools_logo.png" alt="Theratools" style={{ height: '120px', width: 'auto' }} />
         </NavLink>
 
         {/* Desktop nav links */}
         <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2" aria-label="主导航">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `relative text-sm py-1 transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white after:transition-all after:duration-200 ${
+                isActive && !activeId ? 'text-white after:w-full' : 'text-text-secondary hover:text-white after:w-0 hover:after:w-full'
+              }`
+            }
+          >
+            首页
+          </NavLink>
           <a
             href="/#technology"
             onClick={(e) => handleHashClick(e, 'technology')}
@@ -80,13 +91,15 @@ export default function Nav() {
 
         {/* CTA button, NO mobile menu */}
         <div className="flex items-center gap-3">
-          <Button
-            variant="primary"
-            size="sm"
-            href="https://theratools.tmall.com/category.htm?spm=pc_detail.30350276.shop_block.dshopinfo.1bb47dd69PnjDH"
-          >
-            查看产品
-          </Button>
+          <MagneticButton strength={0.2}>
+            <Button
+              variant="primary"
+              size="sm"
+              href="https://theratools.tmall.com/category.htm?spm=pc_detail.30350276.shop_block.dshopinfo.1bb47dd69PnjDH"
+            >
+              查看产品
+            </Button>
+          </MagneticButton>
         </div>
       </div>
     </header>

@@ -44,6 +44,8 @@ export interface SceneItem {
 
 export interface TrustStat {
   number: string
+  target: number
+  suffix?: string
   unit: string
   label: string
 }

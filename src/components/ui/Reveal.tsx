@@ -1,48 +1,41 @@
-import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { type ReactNode, useRef } from 'react'
+import { gsap, useGSAP, prefersReducedMotion } from '../../lib/gsap'
 
 interface RevealProps {
   children: ReactNode
   delay?: number
   className?: string
+  y?: number
 }
 
-export default function Reveal({ children, delay = 0, className = '' }: RevealProps) {
+export default function Reveal({ children, delay = 0, className = '', y = 24 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
 
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) {
-      setIsVisible(true)
+  useGSAP(() => {
+    if (prefersReducedMotion()) {
+      gsap.set(ref.current, { opacity: 1, y: 0 })
       return
     }
-
-    const el = ref.current
-    if (!el) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          const timer = setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
-          observer.unobserve(el)
-          return () => clearTimeout(timer)
-        }
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0, y },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: delay / 1000,
+        scrollTrigger: {
+          trigger: ref.current,
+          start: 'top 88%',
+          once: true,
+        },
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
     )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [delay])
+  }, { scope: ref })
 
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-[600ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'} ${className}`}
-      style={{ transitionTimingFunction: 'var(--ease-out)' }}
-    >
+    <div ref={ref} className={className} style={{ opacity: 0 }}>
       {children}
     </div>
   )
