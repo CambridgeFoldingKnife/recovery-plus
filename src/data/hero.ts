@@ -23,7 +23,7 @@ export const heroData: HeroData = {
 }
 
 export const productInsight = {
-  imageSrc: '/assets/9.JPG',
+  imageSrc: '/assets/002.jpg',
   title: 'Theratools气压恢复靴',
   subtitle: '让专业级的恢复，不再只属于明星运动员。',
   descriptions: [

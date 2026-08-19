@@ -3,7 +3,7 @@ import { useStickyNav } from '../../hooks/useStickyNav'
 import { useScrollSpy } from '../../hooks/useScrollSpy'
 import Button from '../ui/Button'
 
-const HOME_SECTION_IDS = ['top', 'technology', 'products', 'scenes', 'training']
+const HOME_SECTION_IDS = ['top', 'technology', 'products', 'scenes']
 
 export default function Nav() {
   const isScrolled = useStickyNav()
@@ -56,6 +56,16 @@ export default function Nav() {
           >
             运动恢复场景
           </a>
+          <NavLink
+            to="/product"
+            className={({ isActive }) =>
+              `relative text-sm py-1 transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white after:transition-all after:duration-200 ${
+                isActive ? 'text-white after:w-full' : 'text-text-secondary hover:text-white after:w-0 hover:after:w-full'
+              }`
+            }
+          >
+            产品说明
+          </NavLink>
           <NavLink
             to="/faq"
             className={({ isActive }) =>

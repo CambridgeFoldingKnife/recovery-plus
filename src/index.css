@@ -13,6 +13,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* 让 hash 锚点滚动避开 sticky 导航（h-16=64px），留 80px 余量 */
+    scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
   }
 

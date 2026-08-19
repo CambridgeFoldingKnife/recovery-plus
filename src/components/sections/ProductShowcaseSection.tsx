@@ -22,10 +22,8 @@ export default function ProductShowcaseSection() {
                   <img
                     src={product.imageSrc}
                     alt={`Theratools ${product.label}`}
-                    width={1216}
-                    height={912}
                     loading="lazy"
-                    className="object-contain w-full h-full p-6 transition-transform duration-500 hover:scale-105"
+                    className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
                   />
                   <span
                     className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
