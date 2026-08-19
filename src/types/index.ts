@@ -4,6 +4,13 @@ export interface TimelineItem {
   isBrand?: boolean
 }
 
+export interface HistoryImage {
+  src: string
+  caption: string
+  source: string
+  isVertical?: boolean // 竖版工程图纸
+}
+
 export interface FeatureCard {
   iconSvg: string // use icon key from Icons
   title: string
