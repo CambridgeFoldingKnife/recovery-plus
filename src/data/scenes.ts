@@ -22,6 +22,6 @@ export const scenes: SceneItem[] = [
 ]
 
 export const sceneImage = {
-  src: '/assets/003.jpg',
+  src: '/assets/2026-8-19.png',
   alt: '运动后使用 Theratools 空气压力波恢复',
 }
