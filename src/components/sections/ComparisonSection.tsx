@@ -25,12 +25,12 @@ export default function ComparisonSection() {
               >
                 <div className="mb-5">
                   <h3 className="text-lg font-bold mb-1">{card.title}</h3>
-                  <p className="text-sm text-text-tertiary">{card.subtitle}</p>
+                  <p className="text-base text-text-tertiary">{card.subtitle}</p>
                 </div>
 
                 <ul className="flex flex-col gap-3">
                   {card.features.map((feature, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm">
+                    <li key={j} className="flex items-center gap-2 text-base">
                       <span className={feature.isPositive ? 'text-success' : 'text-text-tertiary'}>
                         {feature.isPositive ? <CheckIcon /> : <CrossIcon />}
                       </span>

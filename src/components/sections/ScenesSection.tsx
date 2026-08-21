@@ -50,7 +50,7 @@ export default function ScenesSection() {
         <SectionHeader
           label="运动恢复场景"
           title={<>跑完、练完、赛完，<br />恢复各有重点。</>}
-          subtitle="运动不同，双腿承受的压力也不同。按运动项目选择恢复重点，不用一套程序应付所有训练。"
+          subtitle={`运动不同，双腿承受的压力也不同。${'\n'}按运动项目选择恢复重点，不用一套程序应付所有训练。`}
           centered
         />
 
@@ -59,22 +59,24 @@ export default function ScenesSection() {
             {scenes.map((scene, i) => (
               <div key={i} className="scene-item" style={{ opacity: 0 }}>
                 <h3 className="text-xl font-bold mb-1">{scene.title}</h3>
-                <p className="text-sm text-accent font-medium mb-2">{scene.subtitle}</p>
+                <p className="text-base text-accent font-medium mb-2">{scene.subtitle}</p>
                 <p className="text-text-secondary leading-relaxed">{scene.description}</p>
               </div>
             ))}
           </div>
 
           <RevealWrapper>
-            <img
-              ref={imageRef}
-              src={sceneImage.src}
-              alt={sceneImage.alt}
-              width={2752}
-              height={1536}
-              loading="lazy"
-              className="rounded-xl will-change-transform"
-            />
+            <div className="relative h-[410px] rounded-xl overflow-hidden will-change-transform">
+              <img
+                ref={imageRef}
+                src={sceneImage.src}
+                alt={sceneImage.alt}
+                width={2752}
+                height={1536}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
           </RevealWrapper>
         </div>
       </div>
