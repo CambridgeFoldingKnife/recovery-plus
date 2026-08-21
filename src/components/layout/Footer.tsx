@@ -54,15 +54,15 @@ export default function Footer() {
 
         <div className="flex justify-center gap-8 mt-8">
           <div className="flex flex-col items-center gap-1">
-            <img src="/assets/Theratools.png" alt="Theratools 公众号二维码" width="120" height="120" />
+            <img src="/assets/Theratools.png" alt="Theratools 公众号二维码" width="120" height="120" className="w-[120px] h-[120px] object-contain" />
             <span className="text-base text-text-tertiary">官方公众号</span>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <img src="/assets/jd.png" alt="京东旗舰店二维码" width="120" height="120" />
+            <img src="/assets/jd.png" alt="京东旗舰店二维码" width="120" height="120" className="w-[120px] h-[120px] object-contain" />
             <span className="text-base text-text-tertiary">京东旗舰店</span>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <img src="/assets/tb.png" alt="淘宝旗舰店二维码" width="120" height="120" />
+            <img src="/assets/tb.png" alt="淘宝旗舰店二维码" width="120" height="120" className="w-[120px] h-[120px] object-contain" />
             <span className="text-base text-text-tertiary">淘宝旗舰店</span>
           </div>
         </div>
