@@ -34,7 +34,7 @@ export default function FeaturesSection() {
                   {iconMap[feature.iconSvg]}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
+                <p className="text-text-secondary text-base leading-relaxed">{feature.description}</p>
               </Card>
             </Reveal>
           ))}

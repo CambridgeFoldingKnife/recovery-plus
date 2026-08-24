@@ -20,6 +20,13 @@ export default function Nav() {
     }
   }
 
+  // 已在首页时点击首页/Logo → 强制滚回顶部（pathname 不变，Layout 的 scrollTo 不会触发）
+  const handleHomeClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-med ${
@@ -29,7 +36,7 @@ export default function Nav() {
       }`}
     >
       <div className="container flex items-center justify-between h-16">
-        <NavLink to="/" className="shrink-0 flex items-center magnetic" aria-label="Theratools 首页">
+        <NavLink to="/" onClick={handleHomeClick} className="shrink-0 flex items-center magnetic" aria-label="Theratools 首页">
           <img src="/assets/threatools_logo.png" alt="Theratools" style={{ height: '120px', width: 'auto' }} />
         </NavLink>
 
@@ -37,6 +44,7 @@ export default function Nav() {
         <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2" aria-label="主导航">
           <NavLink
             to="/"
+            onClick={handleHomeClick}
             className={({ isActive }) =>
               `relative text-sm py-1 transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white after:transition-all after:duration-200 ${
                 isActive && !activeId ? 'text-white after:w-full' : 'text-text-secondary hover:text-white after:w-0 hover:after:w-full'

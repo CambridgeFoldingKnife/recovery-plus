@@ -2,7 +2,7 @@ import type { HeroData } from '../types'
 
 export const heroData: HeroData = {
   label: 'Theratools 空气压力波运动恢复设备',
-  title: '练完就恢复，\n明天不耽误。',
+  title: '「您身边的运动恢复专家」',
   lede: '源自康复专业临床 · 专研运动恢复科技',
   desc: '你拼尽全力的训练，值得一次专业级的恢复。',
   pills: [
@@ -29,6 +29,12 @@ export const productInsight = {
   descriptions: [
     '真正打乱训练计划的，往往不是训练时的累，而是训练后迟迟散不去的沉、紧和胀。',
     '跑者担心下一次配速掉下来；练腿的人担心第二天上下楼；连续比赛的人，没有一整天慢慢等身体恢复。',
+  ],
+  highlights: [
+    '4 腔独立气囊 · 梯度气压程序',
+    '15 分钟自动运行 · 穿好即用',
+    '≤42dB 静音 · 看比赛也能恢复',
+    '折叠装入随身小包 · 客场照常',
   ],
   emphasis: '恢复不是练完后的奖励。\n它是训练计划的下一项。',
 }

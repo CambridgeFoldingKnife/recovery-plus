@@ -14,11 +14,11 @@ export default function SectionHeader({ label, title, subtitle, centered }: Sect
       className={`max-w-[720px] mb-12 ${centered ? 'mx-auto text-center' : ''}`}
     >
       <SectionLabel>{label}</SectionLabel>
-      <h2 className="text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+      <h2 className="text-3xl lg:text-4xl font-bold tracking-tight leading-relaxed">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-text-secondary leading-relaxed max-w-[600px]">
+        <p className={`mt-3 text-lg text-text-secondary leading-relaxed max-w-[600px] whitespace-pre-line ${centered ? 'mx-auto' : ''}`}>
           {subtitle}
         </p>
       )}

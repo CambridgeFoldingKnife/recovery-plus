@@ -30,7 +30,7 @@ export default function TrainingSection() {
                   {iconMap[card.iconSvg]}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{card.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed mb-4">{card.description}</p>
+                <p className="text-text-secondary text-base leading-relaxed mb-4">{card.description}</p>
                 <ul className="flex flex-col gap-2">
                   {card.bullets.map((bullet, j) => (
                     <li key={j} className="flex items-center gap-2 text-sm text-text-secondary">

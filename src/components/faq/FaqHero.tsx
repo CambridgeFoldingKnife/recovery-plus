@@ -5,7 +5,7 @@ export default function FaqHero() {
     <section className="pt-12 pb-8 text-center">
       <div className="container container--narrow">
         <Reveal>
-          <p className="text-xs tracking-[0.2em] uppercase text-text-tertiary font-medium mb-4">Theratools</p>
+          <p className="text-lg tracking-[0.2em] uppercase text-text-tertiary font-medium mb-4">Theratools</p>
         </Reveal>
         <Reveal delay={100}>
           <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">常见问题</h1>

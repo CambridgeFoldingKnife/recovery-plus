@@ -10,7 +10,7 @@ export const timelineHistoryImages: (HistoryImage[] | null)[] = [
   [
     {
       src: '/images/US2140898-0.png',
-      caption: 'US 2,140,898 · 首台自动间歇气压装置（1938）',
+      caption: 'US 2,140,898 · 首台自动间歇气压装置（1938）—— 空气压力治疗技术的可追溯起点',
       source: '美国专利局 · 公有领域',
       isVertical: true,
     },
@@ -19,12 +19,12 @@ export const timelineHistoryImages: (HistoryImage[] | null)[] = [
   [
     {
       src: '/images/AWM_C217174_cotton_team_1941.JPG',
-      caption: 'Cotton 抗荷服首次成功飞行试验合影（1941）',
+      caption: '1941 年 · 抗荷服首次飞行试验 —— 气体加压技术在航空医学的最早应用',
       source: '澳大利亚战争纪念馆 · 公有领域',
     },
     {
       src: '/images/AWM_C20836_cotton_centrifuge.JPG',
-      caption: 'Frank Cotton 在自制人体离心机中测试抗荷服',
+      caption: 'Frank Cotton 离心机测试抗荷服 —— 加压气体对肢体的压迫效应验证',
       source: '澳大利亚战争纪念馆 · 公有领域',
     },
   ],
@@ -32,12 +32,12 @@ export const timelineHistoryImages: (HistoryImage[] | null)[] = [
   [
     {
       src: '/images/FlowtronExcel_8.jpg',
-      caption: 'Flowtron Excel 主机实拍 · 英国医院 DVT 预防主力机',
+      caption: 'Flowtron Excel 主机实拍 · 英国医院 DVT 预防主力机 —— 空气压力技术的临床标准化应用',
       source: '二手医疗设备商实拍',
     },
     {
       src: '/images/FlowtronExcel_12.jpg',
-      caption: 'Flowtron Excel 主机实拍 · 顶部提手与资产管理标签',
+      caption: 'Flowtron Excel 主机实拍 · 顶部提手与资产管理标签 —— 医院级空气压力设备的机电时代',
       source: '二手医疗设备商实拍',
     },
   ],
@@ -45,13 +45,13 @@ export const timelineHistoryImages: (HistoryImage[] | null)[] = [
   [
     {
       src: '/images/US4029087-1.png',
-      caption: 'US 4,029,087 · 多腔室序贯充气袖套结构原型（1977）',
+      caption: 'US 4,029,087 · 多腔室序贯充气袖套结构原型（1977）—— 空气压力波序贯充气的结构原型',
       source: '美国专利局 · 公有领域',
       isVertical: true,
     },
     {
       src: '/images/US4054129-0.png',
-      caption: 'US 4,054,129 · 三节段脉动加压系统（1977）',
+      caption: 'US 4,054,129 · 三节段脉动加压系统（1977）—— 空气压力波分区脉动的前身',
       source: '美国专利局 · 公有领域',
       isVertical: true,
     },
@@ -60,12 +60,12 @@ export const timelineHistoryImages: (HistoryImage[] | null)[] = [
   [
     {
       src: '/assets/2026-8-19.png',
-      caption: 'Theratools 空气压力波运动恢复设备',
+      caption: 'Theratools 空气压力波运动恢复设备 —— 空气压力技术走向运动恢复',
       source: 'Theratools 品牌',
     },
     {
       src: '/assets/1.png',
-      caption: 'Theratools 气压恢复靴产品图',
+      caption: 'Theratools 气压恢复靴产品图 —— 空气压力波技术的现代运动应用',
       source: 'Theratools 品牌',
     },
   ],

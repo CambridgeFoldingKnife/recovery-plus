@@ -13,7 +13,7 @@ export default function PageHero({ label, title, subtitle }: PageHeroProps) {
       <div className="container container--narrow">
         {label && (
           <Reveal>
-            <p className="text-xs tracking-[0.2em] uppercase text-text-tertiary font-medium mb-4">{label}</p>
+            <p className="text-lg tracking-[0.2em] uppercase text-text-tertiary font-medium mb-4">{label}</p>
           </Reveal>
         )}
         <Reveal delay={100}>

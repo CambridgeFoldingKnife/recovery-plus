@@ -1,27 +1,22 @@
 import { useRef } from 'react'
 import { heroData } from '../../data/hero'
-import Button from '../ui/Button'
-import MagneticButton from '../ui/MagneticButton'
+// import Button from '../ui/Button'
+// import MagneticButton from '../ui/MagneticButton'
 import { gsap, useGSAP, prefersReducedMotion } from '../../lib/gsap'
-
-const RING_COUNT = 6
-const rings = Array.from({ length: RING_COUNT }, (_, i) => i)
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const labelRef = useRef<HTMLParagraphElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const ledeRef = useRef<HTMLParagraphElement>(null)
   const descRef = useRef<HTMLParagraphElement>(null)
   const pillsRef = useRef<HTMLUListElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
-  const ringsRef = useRef<HTMLDivElement>(null)
 
-  const scrollToScenes = () => {
-    document.getElementById('scenes')?.scrollIntoView({ behavior: 'smooth' })
-  }
+  // const scrollToScenes = () => {
+  //   document.getElementById('scenes')?.scrollIntoView({ behavior: 'smooth' })
+  // }
 
   useGSAP(() => {
     if (prefersReducedMotion()) return
@@ -29,34 +24,9 @@ export default function HeroSection() {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // 1. Background breathing
-      gsap.to(bgRef.current, {
-        scale: 1.06,
-        duration: 8,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-      })
-
-      // 2. Pressure wave rings
-      const ringEls = ringsRef.current?.querySelectorAll('.ring')
-      if (ringEls) {
-        ringEls.forEach((ring, i) => {
-          gsap.fromTo(ring, { scale: 0.2, opacity: 0.8 }, {
-            scale: 2.2,
-            opacity: 0,
-            duration: 2.5,
-            ease: 'power1.out',
-            repeat: -1,
-            delay: -i * 1,
-          })
-        })
-      }
-
-      // 3. Content entrance sequence
+      // Content entrance sequence
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      tl.fromTo(labelRef.current, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0)
-        .fromTo(ledeRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.55)
+      tl.fromTo(ledeRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0)
         .fromTo(descRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.65)
         .fromTo(pillsRef.current?.children ?? [], { y: 16, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.06, duration: 0.5 }, 0.75)
         .fromTo(ctaRef.current, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.9)
@@ -107,61 +77,54 @@ export default function HeroSection() {
   const titleLines = heroData.title.split('\n')
 
   return (
-    <section ref={sectionRef} id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} id="top" className="relative min-h-screen flex items-stretch overflow-hidden">
       {/* Breathing background */}
       <div
         ref={bgRef}
-        className="absolute inset-0 bg-[url('/assets/hero.png')] bg-cover bg-center origin-center"
+        className="absolute inset-0 bg-[url('/assets/hero2.png')] bg-cover bg-center origin-center"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-bg-primary" aria-hidden="true" />
 
-      {/* Pressure wave rings */}
-      <div ref={ringsRef} className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-        {rings.map((i) => (
-          <div
-            key={i}
-            className={`ring absolute rounded-full border ${i % 3 === 0 ? 'border-accent/20' : 'border-white/10'}`}
-            style={{ width: 200 + i * 30, height: 200 + i * 30 }}
-          />
-        ))}
-      </div>
-
-      <div ref={contentRef} className="container relative z-10 py-24 lg:py-32 text-center">
-        <p ref={labelRef} className="text-xs tracking-[0.2em] uppercase text-text-tertiary font-medium mb-6" style={{ opacity: 0 }}>
-          {heroData.label}
-        </p>
-
+      <div ref={contentRef} className="container relative z-10 py-16 lg:py-24 text-center flex flex-col w-full justify-center">
         <h1
           ref={titleRef}
-          className="text-display font-extrabold leading-[1.05] tracking-tight mb-6 max-w-[900px] mx-auto"
+          className="text-display font-extrabold leading-[1.05] tracking-tight mb-8 max-w-[900px] mx-auto translate-x-[22px]"
         >
           {titleLines.map((line, lineIdx) => (
             <span key={lineIdx} className="block overflow-hidden whitespace-nowrap">
               <span className="block will-change-transform">
-                {line.split('').map((char, charIdx) => (
-                  <span key={charIdx} className="blur-char inline-block" style={prefersReducedMotion() ? { filter: 'none', opacity: 1, transform: 'none' } : undefined}>
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                ))}
+                {line.split('').map((char, charIdx) => {
+                  const isPunct = '\uFF0C\u3002\u3001\uFF1B\uFF1A\uFF01\uFF1F'.includes(char)
+                  return (
+                    <span
+                      key={charIdx}
+                      className={`blur-char inline-block ${isPunct ? 'text-[0.78em]' : ''}`}
+                      style={prefersReducedMotion() ? { filter: 'none', opacity: 1, transform: 'none' } : undefined}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  )
+                })}
               </span>
             </span>
           ))}
         </h1>
 
-        <p ref={ledeRef} className="text-lg text-text-secondary mb-2 gradient-text font-semibold" style={{ opacity: 0 }}>
+        <p ref={ledeRef} className="text-lg text-text-secondary mb-8 gradient-text font-semibold" style={{ opacity: 0 }}>
           {heroData.lede}
         </p>
 
-        <p ref={descRef} className="text-text-secondary max-w-[560px] mx-auto mb-8" style={{ opacity: 0 }}>
+        <p ref={descRef} className="text-base text-text-secondary max-w-[560px] mx-auto mb-10" style={{ opacity: 0 }}>
           {heroData.desc}
         </p>
 
-        <ul ref={pillsRef} className="flex flex-wrap gap-2 mb-8 justify-center" aria-label="核心参数">
+        {/* 参数 pills */}
+        <ul ref={pillsRef} className="flex flex-wrap gap-3 mb-10 justify-center" aria-label="核心参数">
           {heroData.pills.map((pill, i) => (
             <li
               key={i}
-              className="px-4 py-2 rounded-full border border-[#333] text-sm text-text-secondary bg-white/[0.03] backdrop-blur-sm transition-colors duration-300 hover:border-accent/40 hover:text-white"
+              className="px-5 py-2.5 rounded-full border border-[#333] text-base text-text-secondary bg-white/[0.03] backdrop-blur-sm transition-colors duration-300 hover:border-accent/40 hover:text-white"
               style={{ opacity: 0 }}
             >
               {pill.text}
@@ -169,7 +132,8 @@ export default function HeroSection() {
           ))}
         </ul>
 
-        <div ref={ctaRef} className="flex flex-wrap gap-4 justify-center" style={{ opacity: 0 }}>
+        {/* CTA 按钮（暂隐藏，看效果） */}
+        {/* <div ref={ctaRef} className="flex flex-wrap gap-4 justify-center" style={{ opacity: 0 }}>
           <MagneticButton>
             <Button variant="primary" href={heroData.primaryCta.href}>
               {heroData.primaryCta.text}
@@ -180,7 +144,7 @@ export default function HeroSection() {
               {heroData.secondaryCta.text}
             </Button>
           </MagneticButton>
-        </div>
+        </div> */}
       </div>
     </section>
   )

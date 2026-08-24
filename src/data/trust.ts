@@ -4,7 +4,7 @@ export const trustStats: TrustStat[] = [
   { number: '10', target: 10, unit: '年', label: '康复专业技术与培训积累' },
   { number: '10万', target: 10, suffix: '万', unit: '+', label: '累计培训康复师与医师' },
   { number: '50', target: 50, unit: '+', label: '全球合作康复师' },
-  { number: '数百', target: 0, unit: '篇', label: '出版或翻译康复专业著作' },
+  { number: '500', target: 500, unit: '+篇', label: '出版或翻译康复专业著作' },
 ]
 
 export const trustTexts: string[] = [

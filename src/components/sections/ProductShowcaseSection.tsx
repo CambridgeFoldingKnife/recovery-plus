@@ -103,12 +103,12 @@ export default function ProductShowcaseSection({ images }: { images?: string[] }
                 onMouseLeave={handleTiltReset}
               >
                 <Card className="h-full" glow>
-                  <div className="relative overflow-hidden bg-bg-secondary">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-bg-secondary">
                     <img
                       src={images?.[i] ?? product.imageSrc}
                       alt={`Theratools ${product.label}`}
                       loading="lazy"
-                      className="w-full h-auto block transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                     />
                     <span
                       className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
@@ -126,15 +126,15 @@ export default function ProductShowcaseSection({ images }: { images?: string[] }
                     <p className="text-xs tracking-[0.2em] uppercase text-text-tertiary font-medium mb-2">
                       {product.label}
                     </p>
-                    <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                    <p className="text-text-secondary text-base leading-relaxed mb-4">
                       {product.description}
                     </p>
 
                     <ul className="grid grid-cols-2 gap-3">
                       {product.specs.map((spec, j) => (
                         <li key={j}>
-                          <span className="block text-xs text-text-tertiary mb-0.5">{spec.label}</span>
-                          <b className="text-sm">{spec.value}</b>
+                          <span className="block text-lg text-text-tertiary mb-0.5">{spec.label}</span>
+                          <b className="text-xl">{spec.value}</b>
                         </li>
                       ))}
                     </ul>
